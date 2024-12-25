@@ -1,6 +1,6 @@
-import Router from "./Router";
-import { GlobalStyles } from "./common/styles/GlobalStyles";
+import { GlobalStyles } from "@/common/styles/GlobalStyles";
 import "@radix-ui/themes/styles.css";
+import Router from "@/Router";
 
 function App() {
   return (

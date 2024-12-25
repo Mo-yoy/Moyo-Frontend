@@ -1,6 +1,6 @@
+import GlobalLayout from "@/common/components/GlobalLayout";
+import MenuPage from "@/Menu/page";
 import { Route, Routes } from "react-router";
-import MenuPage from "./Menu/page";
-import GlobalLayout from "./common/components/GlobalLayout";
 
 export default function Router() {
   return (
