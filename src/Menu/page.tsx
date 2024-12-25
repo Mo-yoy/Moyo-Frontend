@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Blockquote, Card, Checkbox, Heading } from "@radix-ui/themes";
-import { version } from "react";
+import { useEffect, useState, version } from "react";
 
 export default function MenuPage() {
   return (
