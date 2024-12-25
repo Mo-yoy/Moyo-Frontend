@@ -1,3 +1,5 @@
+import { css } from "@emotion/react";
+
 export default function MenuPage() {
-  return <>menu</>;
+  return <div css={css({ color: "red" })}>menu</div>;
 }
