@@ -1,3 +1,3 @@
 export default function MenuPage() {
-    return <>menu</>
+  return <>menu</>;
 }

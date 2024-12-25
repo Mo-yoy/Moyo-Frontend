@@ -1,10 +1,7 @@
-
-import Router from './common/components/Router'
+import Router from "./common/components/Router";
 
 function App() {
-  return (
-      <Router/>
-  );
+	return <Router />;
 }
 
 export default App;
