@@ -1,9 +1,8 @@
+import { reset } from "@/common/styles/reset";
 import { Global, css } from "@emotion/react";
 import type { ReactElement } from "react";
-import { reset } from "./reset";
 
 const globalCss = css`
-  /* font-face 추가 필요 */
   ${reset}
 `;
 export function GlobalStyles(): ReactElement {
