@@ -11,6 +11,9 @@ export default function MenuPage() {
       <Heading size="6" css={css({ color: "red" })}>
         heading
       </Heading>
+      <p>안녕 정우</p>
+      <p>안녕 연서</p>
+      <p>안녕 서현</p>
       <Blockquote weight="bold">quote quote</Blockquote>
     </>
   );
