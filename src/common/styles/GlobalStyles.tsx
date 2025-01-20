@@ -9,7 +9,8 @@ const globalCss = css`
     font-family: "Pretendard";
     font-weight: 100 900;
     font-display: swap;
-    src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+    src: url("/fonts/PretendardVariable.woff2") format("woff2")
+      tech("variations");
   }
 
   .radix-themes {
