@@ -1,4 +1,4 @@
-import UserListItemBox from "@/common/components/UserListItemBox";
+import UserListItemCard from "@/common/components/UserListItemCard";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Blockquote, Card, Checkbox, Flex, Heading, Radio, Text } from "@radix-ui/themes";
@@ -18,19 +18,19 @@ export default function MenuPage() {
 
       <UserListContainer>
         <Flex direction="column" gap="2">
-          <UserListItemBox asChild>
+          <UserListItemCard asChild>
             <Link to="/">
               <Flex>유저1</Flex>
             </Link>
-          </UserListItemBox>
+          </UserListItemCard>
 
-          <UserListItemBox asChild>
+          <UserListItemCard asChild>
             <button type="button" onClick={() => console.log("here")}>
               유저2
             </button>
-          </UserListItemBox>
+          </UserListItemCard>
 
-          <UserListItemBox>
+          <UserListItemCard>
             <Flex gap="3">
               <Text as="label" size="2">
                 <Radio name="example" value="1" defaultChecked color="indigo" />
@@ -42,9 +42,9 @@ export default function MenuPage() {
                 Comfortable
               </Text>
             </Flex>
-          </UserListItemBox>
+          </UserListItemCard>
 
-          <UserListItemBox>유저4</UserListItemBox>
+          <UserListItemCard>유저4</UserListItemCard>
         </Flex>
       </UserListContainer>
     </>

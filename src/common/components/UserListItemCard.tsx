@@ -5,7 +5,7 @@ interface Props extends CardProps {
   children: ReactNode;
 }
 
-export default function UserListItemBox({ children, ...props }: Props) {
+export default function UserListItemCard({ children, ...props }: Props) {
   return (
     <Card variant="classic" {...props}>
       {children}
