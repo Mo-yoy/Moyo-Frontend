@@ -1,4 +1,3 @@
-import { Flex } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
 
@@ -11,11 +10,9 @@ interface HeaderProps {
 function Header({ leftElement, centerElement, rightElement }: HeaderProps) {
   return (
     <HeaderWrapper aria-label="페이지 헤더">
-      <Flex height="100%" align="center">
-        <LeftElement>{leftElement}</LeftElement>
-        <CenterElement>{centerElement}</CenterElement>
-        <RightElement>{rightElement}</RightElement>
-      </Flex>
+      <LeftElement>{leftElement}</LeftElement>
+      <CenterElement>{centerElement}</CenterElement>
+      <RightElement>{rightElement}</RightElement>
     </HeaderWrapper>
   );
 }
@@ -26,6 +23,9 @@ const HeaderWrapper = styled.header({
   position: "sticky",
   zIndex: 999,
   top: 0,
+
+  display: "flex",
+  alignItems: "center",
 
   width: "100%",
   height: "4.8rem",
