@@ -1,13 +1,27 @@
+import Header from "@/common/components/Header";
 import UserListItemCard from "@/common/components/UserListItemCard";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Blockquote, Card, Checkbox, Flex, Heading, Radio, Text } from "@radix-ui/themes";
+import {
+  Blockquote,
+  Card,
+  Checkbox,
+  Flex,
+  Heading,
+  Radio,
+  Text,
+} from "@radix-ui/themes";
 import { version } from "react";
 import { Link } from "react-router";
 
 export default function MenuPage() {
   return (
-    <>
+    <div>
+      <Header
+        leftElement={"왼쪽"}
+        centerElement={"중앙"}
+        rightElement={"오른쪽"}
+      />
       {version}
       <Card variant="surface">menu</Card>
       <Checkbox defaultChecked />
@@ -50,11 +64,11 @@ export default function MenuPage() {
           <UserListItemCard>유저4</UserListItemCard>
         </Flex>
       </UserListContainer>
-    </>
+    </div>
   );
 }
 
 const UserListContainer = styled.div({
   width: "100vw",
-  padding: "10px",
+  padding: "1rem",
 });
