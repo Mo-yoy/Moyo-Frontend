@@ -1,5 +1,6 @@
 import Header from "@/common/components/Header";
 import UserListItemCard from "@/common/components/UserListItemCard";
+import UserProfileAvatar from "@/common/components/UserProfileAvatar";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import {
@@ -16,7 +17,7 @@ import { Link } from "react-router";
 
 export default function MenuPage() {
   return (
-    <div>
+    <>
       <Header
         leftElement={"왼쪽"}
         centerElement={"중앙"}
@@ -24,6 +25,7 @@ export default function MenuPage() {
       />
       {version}
       <Card variant="surface">menu</Card>
+
       <Checkbox defaultChecked />
       <Heading size="6" css={css({ color: "red" })}>
         heading
@@ -64,7 +66,11 @@ export default function MenuPage() {
           <UserListItemCard>유저4</UserListItemCard>
         </Flex>
       </UserListContainer>
-    </div>
+
+      {/* fallback이 보여지는 케이스 -> 이미지 로딩 실패시 */}
+      <UserProfileAvatar size="9" />
+      <UserProfileAvatar src="https://picsum.photos/id/237/200/300" size="9" />
+    </>
   );
 }
 
