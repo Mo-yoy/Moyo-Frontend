@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 import styled from "@emotion/styled";
 
 interface HeaderProps {
-  leftElement?: ReactNode;
-  centerElement: ReactNode;
-  rightElement?: ReactNode;
+  leftElement?: ReactElement | string;
+  centerElement: ReactElement | string;
+  rightElement?: ReactElement | string;
 }
 
 function Header({ leftElement, centerElement, rightElement }: HeaderProps) {
