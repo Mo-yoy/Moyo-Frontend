@@ -35,16 +35,16 @@ const HeaderWrapper = styled.header({
   backgroundColor: "white",
 });
 
-const LeftElement = styled.div`
-  position: absolute;
-  left: 1.5rem;
-`;
+const LeftElement = styled.div({
+  position: "absolute",
+  left: "1.5rem",
+});
 
-const CenterElement = styled.div`
-  margin: 0 auto;
-`;
+const CenterElement = styled.div({
+  margin: "0 auto",
+});
 
-const RightElement = styled.div`
-  position: absolute;
-  right: 1.5rem;
-`;
+const RightElement = styled.div({
+  position: "absolute",
+  right: "1.5rem",
+});
