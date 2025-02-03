@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import styled from "@emotion/styled";
+import { Z_INDEX } from "../constants/zIndex";
 
 interface HeaderProps {
   leftElement?: ReactElement | string;
@@ -23,7 +24,7 @@ export default Header;
 
 const HeaderWrapper = styled.header({
   position: "sticky",
-  zIndex: 999,
+  zIndex: Z_INDEX.HEADER,
   top: 0,
 
   display: "flex",
