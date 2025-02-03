@@ -11,7 +11,9 @@ function Header({ leftElement, centerElement, rightElement }: HeaderProps) {
   return (
     <HeaderWrapper aria-label="페이지 헤더">
       <LeftElement>{leftElement}</LeftElement>
-      <CenterElement>{centerElement}</CenterElement>
+      <CenterElement as={typeof centerElement === "string" ? "h1" : "div"}>
+        {centerElement}
+      </CenterElement>
       <RightElement>{rightElement}</RightElement>
     </HeaderWrapper>
   );
