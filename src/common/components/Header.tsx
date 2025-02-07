@@ -3,19 +3,19 @@ import styled from "@emotion/styled";
 import { Z_INDEX } from "../constants/zIndex";
 
 interface HeaderProps {
-  leftElement?: ReactElement | string;
-  centerElement: ReactElement | string;
-  rightElement?: ReactElement | string;
+  left?: ReactElement | string;
+  center: ReactElement | string;
+  right?: ReactElement | string;
 }
 
-function Header({ leftElement, centerElement, rightElement }: HeaderProps) {
+function Header({ left, center, right }: HeaderProps) {
   return (
     <HeaderWrapper aria-label="페이지 헤더">
-      <LeftElement>{leftElement}</LeftElement>
-      <CenterElement as={typeof centerElement === "string" ? "h1" : "div"}>
-        {centerElement}
+      <LeftElement>{left}</LeftElement>
+      <CenterElement as={typeof center === "string" ? "h1" : "div"}>
+        {center}
       </CenterElement>
-      <RightElement>{rightElement}</RightElement>
+      <RightElement>{right}</RightElement>
     </HeaderWrapper>
   );
 }
