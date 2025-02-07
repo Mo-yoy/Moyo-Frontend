@@ -28,7 +28,6 @@ const HeaderWrapper = styled.header({
   top: 0,
 
   display: "flex",
-  alignItems: "center",
 
   width: "100%",
   height: "4.8rem",
@@ -37,15 +36,29 @@ const HeaderWrapper = styled.header({
 });
 
 const LeftElement = styled.div({
+  display: "flex",
+  alignItems: "center",
+
   position: "absolute",
   left: "1.5rem",
+
+  height: "100%",
 });
 
 const CenterElement = styled.div({
+  display: "flex",
+  alignItems: "center",
+
   margin: "0 auto",
+  height: "100%",
 });
 
 const RightElement = styled.div({
+  display: "flex",
+  alignItems: "center",
+
   position: "absolute",
   right: "1.5rem",
+
+  height: "100%",
 });
