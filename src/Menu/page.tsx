@@ -68,7 +68,7 @@ export default function MenuPage() {
         {/* fallback이 보여지는 케이스 -> 이미지 로딩 실패시 */}
         <UserProfileAvatar size="9" />
         {/* 세로 방향 spacing */}
-        <Spacer height="10rem" />
+        <Spacer height={10} />
         <UserProfileAvatar
           src="https://picsum.photos/id/237/200/300"
           size="9"
@@ -78,7 +78,7 @@ export default function MenuPage() {
         {/* fallback이 보여지는 케이스 -> 이미지 로딩 실패시 */}
         <UserProfileAvatar size="9" />
         {/* 가로 방향 spacing */}
-        <Spacer width={"10rem"} />
+        <Spacer width={10} />
         <UserProfileAvatar
           src="https://picsum.photos/id/237/200/300"
           size="9"
