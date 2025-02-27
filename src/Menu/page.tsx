@@ -3,6 +3,7 @@ import Spacer from "@/common/components/Spacer";
 import UserListItemCard from "@/common/components/UserListItemCard";
 import UserProfileAvatar from "@/common/components/UserProfileAvatar";
 import { colors } from "@/common/styles/theme";
+import { rem } from "@/common/utils/rem";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Blockquote, Card, Checkbox, Flex, Heading, Radio, Text } from "@radix-ui/themes";
@@ -77,7 +78,7 @@ export default function MenuPage() {
 
 const UserListContainer = styled.div({
   width: "100vw",
-  padding: "1rem",
+  padding: rem(1),
 
   backgroundColor: colors.main11,
 });
