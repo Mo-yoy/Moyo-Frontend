@@ -13,6 +13,7 @@ export const colors = {
   main10: indigo.indigo10,
   main11: indigo.indigo11,
   main12: indigo.indigo12,
+
   gray1: slate.slate1,
   gray2: slate.slate2,
   gray3: slate.slate3,
@@ -24,6 +25,7 @@ export const colors = {
   gray9: slate.slate9,
   gray10: slate.slate10,
   gray11: slate.slate11,
+
   error1: red.red1,
   error2: red.red2,
   error3: red.red3,
@@ -35,6 +37,7 @@ export const colors = {
   error9: red.red9,
   error10: red.red10,
   error11: red.red11,
+
   success1: jade.jade1,
   success2: jade.jade2,
   success3: jade.jade3,
@@ -46,6 +49,7 @@ export const colors = {
   success9: jade.jade9,
   success10: jade.jade10,
   success11: jade.jade11,
+
   warning1: amber.amber1,
   warning2: amber.amber2,
   warning3: amber.amber3,
