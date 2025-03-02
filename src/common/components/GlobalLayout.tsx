@@ -11,5 +11,7 @@ export default function GlobalLayout() {
 }
 
 const LayoutWrapper = styled.div({
+  width: "100vw",
+  height: "100vh",
   maxWidth: rem(80),
 });
