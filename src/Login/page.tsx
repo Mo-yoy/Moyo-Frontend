@@ -1,4 +1,3 @@
-import { IconGithubLogo } from "@/assets/icons";
 import Spacer from "@/common/components/Spacer";
 import { colors } from "@/common/styles/theme";
 import { rem } from "@/common/utils/rem";
@@ -22,7 +21,15 @@ export function LoginPage() {
           <Spacer height={1} />
           <Description>PR 리뷰 요청과 맞팔 관리도 한 곳에서 </Description>
           <Spacer height={3} />
-          <LoginButton>
+          <LoginButton
+            onClick={() => {
+              const redirectUri = "http://localhost:3000/menu";
+
+              window.location.assign(
+                `https://github.com/login/oauth/authorize?client_id=${import.meta.env.GITHUB_CLIENT_ID}&redirect_uri=${redirectUri}`
+              );
+            }}
+          >
             {/* <IconGithubLogo /> */}
             Github로 시작하기
           </LoginButton>
