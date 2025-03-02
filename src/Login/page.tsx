@@ -4,6 +4,9 @@ import { rem } from "@/common/utils/rem";
 import styled from "@emotion/styled";
 import { indigo, slate } from "@radix-ui/colors";
 
+const REDIRECT_URI = "http://localhost:3000/menu";
+const LOGIN_REQUEST_URL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.GITHUB_CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
+
 export function LoginPage() {
   return (
     <Container>
@@ -23,11 +26,7 @@ export function LoginPage() {
           <Spacer height={3} />
           <LoginButton
             onClick={() => {
-              const redirectUri = "http://localhost:3000/menu";
-
-              window.location.assign(
-                `https://github.com/login/oauth/authorize?client_id=${import.meta.env.GITHUB_CLIENT_ID}&redirect_uri=${redirectUri}`
-              );
+              window.location.assign(LOGIN_REQUEST_URL);
             }}
           >
             {/* <IconGithubLogo /> */}
