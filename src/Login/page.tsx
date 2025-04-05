@@ -5,9 +5,6 @@ import { rem } from "@/common/utils/rem";
 import styled from "@emotion/styled";
 import { indigo, slate } from "@radix-ui/colors";
 
-const REDIRECT_URI = "http://localhost:3000/menu";
-const LOGIN_REQUEST_URL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
-
 export function LoginPage() {
   return (
     <Container>
@@ -25,11 +22,8 @@ export function LoginPage() {
           <Spacer height={1} />
           <Description>PR 리뷰 요청과 맞팔 관리도 한 곳에서 </Description>
           <Spacer height={3} />
-          <LoginButton
-            onClick={() => {
-              window.location.assign(LOGIN_REQUEST_URL);
-            }}
-          >
+          {/* TODO: 로그인 api 요청 */}
+          <LoginButton onClick={() => {}}>
             <IconGithubLogo width={48} height={48} />
             <LoginText>Github로 시작하기</LoginText>
           </LoginButton>
