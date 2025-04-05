@@ -1,3 +1,4 @@
+import { IconGithubLogo } from "@/assets/icons";
 import Spacer from "@/common/components/Spacer";
 import { colors } from "@/common/styles/theme";
 import { rem } from "@/common/utils/rem";
@@ -5,7 +6,7 @@ import styled from "@emotion/styled";
 import { indigo, slate } from "@radix-ui/colors";
 
 const REDIRECT_URI = "http://localhost:3000/menu";
-const LOGIN_REQUEST_URL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.GITHUB_CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
+const LOGIN_REQUEST_URL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
 
 export function LoginPage() {
   return (
@@ -29,8 +30,8 @@ export function LoginPage() {
               window.location.assign(LOGIN_REQUEST_URL);
             }}
           >
-            {/* <IconGithubLogo /> */}
-            Github로 시작하기
+            <IconGithubLogo width={48} height={48} />
+            <LoginText>Github로 시작하기</LoginText>
           </LoginButton>
         </DimmedBackground>
       </TextContainer>
@@ -79,14 +80,25 @@ const Description = styled.p({
 });
 
 const LoginButton = styled.button({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
   backgroundColor: indigo.indigo1,
-  color: slate.slate12,
+
+  width: rem(24),
+  height: rem(5),
+
+  borderRadius: rem(5),
+  padding: `0 ${rem(0.5)}`,
+});
+
+const LoginText = styled.span({
+  width: "90%",
+
   fontWeight: 700,
   fontSize: rem(1.8),
 
-  width: "75%",
-  padding: `${rem(1.6)} 0`,
-  borderRadius: rem(5),
+  color: slate.slate12,
 });
 
 const DimmedBackground = styled.div({
