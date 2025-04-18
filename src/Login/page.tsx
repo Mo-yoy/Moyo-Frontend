@@ -8,9 +8,9 @@ import { indigo, slate } from "@radix-ui/colors";
 export function LoginPage() {
   return (
     <Container>
-      <Video autoPlay muted loop>
+      <BackgroundVideo autoPlay muted loop>
         <source src="src/assets/videos/login_background.mp4" type="video/mp4" />
-      </Video>
+      </BackgroundVideo>
 
       <TextContainer>
         <DimmedBackground>
@@ -22,8 +22,11 @@ export function LoginPage() {
           <Spacer height={1} />
           <Description>PR 리뷰 요청과 맞팔 관리도 한 곳에서 </Description>
           <Spacer height={3} />
-          {/* TODO: 로그인 api 요청 */}
-          <LoginButton onClick={() => {}}>
+          <LoginButton
+            onClick={() => {
+              window.location.href = `${import.meta.env.BASE_URL}/auth/login/github`;
+            }}
+          >
             <IconGithubLogo width={48} height={48} />
             <LoginText>Github로 시작하기</LoginText>
           </LoginButton>
@@ -38,7 +41,7 @@ const Container = styled.div({
   position: "relative",
 });
 
-const Video = styled.video({
+const BackgroundVideo = styled.video({
   width: "100%",
   height: "100vh",
   objectFit: "cover",
