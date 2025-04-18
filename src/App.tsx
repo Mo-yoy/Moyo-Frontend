@@ -5,7 +5,19 @@ import "@radix-ui/themes/styles.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 0,
+      throwOnError: true,
+    },
+    mutations: {
+      retry: 0,
+      throwOnError: true,
+    },
+  },
+});
 
 function App() {
   return (
