@@ -24,7 +24,7 @@ export function LoginPage() {
           <Spacer height={3} />
           <LoginButton
             onClick={() => {
-              window.location.href = `${import.meta.env.BASE_URL}/auth/login/github`;
+              window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/login/github`;
             }}
           >
             <IconGithubLogo width={48} height={48} />
