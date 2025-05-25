@@ -1,19 +1,27 @@
-import { AuthTokenGuard } from "@/common/components/AuthTokenGuard";
 import GlobalLayout from "@/common/components/GlobalLayout";
+import { authLoader } from "@/loaders/authLoader";
 import { LoginPage } from "@/Login/page";
 import MenuPage from "@/Menu/page";
-import { Route, Routes } from "react-router";
+import { createBrowserRouter } from "react-router";
 
-export default function Router() {
-  return (
-    <Routes>
-      <Route element={<GlobalLayout />}>
-        <Route element={<AuthTokenGuard />}>
-          <Route path="menu" element={<MenuPage />} />
-        </Route>
-
-        <Route path="login" element={<LoginPage />} />
-      </Route>
-    </Routes>
-  );
-}
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <GlobalLayout />,
+    children: [
+      {
+        loader: authLoader,
+        children: [
+          {
+            path: "menu",
+            element: <MenuPage />,
+          },
+          {
+            path: "login",
+            element: <LoginPage />,
+          },
+        ],
+      },
+    ],
+  },
+]);
