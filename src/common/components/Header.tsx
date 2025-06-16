@@ -12,9 +12,7 @@ function Header({ left, center, right }: HeaderProps) {
   return (
     <HeaderWrapper aria-label="페이지 헤더">
       <LeftElement>{left}</LeftElement>
-      <CenterElement as={typeof center === "string" ? "h1" : "div"}>
-        {center}
-      </CenterElement>
+      <CenterElement as={typeof center === "string" ? "h1" : "div"}>{center}</CenterElement>
       <RightElement>{right}</RightElement>
     </HeaderWrapper>
   );
@@ -33,6 +31,7 @@ const HeaderWrapper = styled.header({
   height: "4.8rem",
 
   backgroundColor: "white",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 });
 
 const LeftElement = styled.div({
