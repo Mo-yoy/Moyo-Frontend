@@ -1,5 +1,6 @@
 import { reissue } from "@/common/api/reissue";
 import { accessTokenStore } from "@/common/stores/accessTokenStore";
+import { redirect } from "react-router";
 
 export async function authLoader() {
   try {
@@ -7,7 +8,6 @@ export async function authLoader() {
     accessTokenStore.set(data.accessToken);
     return null;
   } catch (e) {
-    window.location.href = "/login";
-    throw e;
+    return redirect("/login");
   }
 }

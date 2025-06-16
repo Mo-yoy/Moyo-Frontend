@@ -10,15 +10,15 @@ export const router = createBrowserRouter([
     element: <GlobalLayout />,
     children: [
       {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
         loader: authLoader,
         children: [
           {
             path: "menu",
             element: <MenuPage />,
-          },
-          {
-            path: "login",
-            element: <LoginPage />,
           },
         ],
       },

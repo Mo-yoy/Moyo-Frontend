@@ -1,10 +1,10 @@
 import { reissue } from "@/common/api/reissue";
 import { accessTokenStore } from "@/common/stores/accessTokenStore";
 import ky from "ky";
+import { redirect } from "react-router";
 
 export const apiClient = ky.create({
   prefixUrl: import.meta.env.VITE_API_BASE_URL,
-  credentials: "include",
   hooks: {
     beforeRequest: [
       (request) => {
@@ -27,7 +27,7 @@ export const apiClient = ky.create({
             return apiClient(request);
           } catch (e) {
             accessTokenStore.clear();
-            window.location.href = "/login";
+            return redirect("/login");
           }
         }
         return response;
