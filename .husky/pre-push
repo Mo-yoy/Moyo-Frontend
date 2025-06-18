@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -e
+
+echo "🔍 Running lint check before push..."
+pnpm lint
+
+echo "✅ Lint check passed!"
