@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import styled from "@emotion/styled";
+import type { ReactElement } from "react";
 import { Z_INDEX } from "../constants/zIndex";
 
 interface HeaderProps {
