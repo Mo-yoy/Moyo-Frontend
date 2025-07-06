@@ -1,4 +1,3 @@
-import type { ApiResponse } from "@/common/types/api";
 import { apiClient } from ".";
 
 interface ReissueBody {
@@ -6,9 +5,7 @@ interface ReissueBody {
 }
 
 export async function reissue() {
-  return apiClient
-    .post<ApiResponse<ReissueBody>>("/auth/reissue/token", {
-      credentials: "include",
-    })
-    .json();
+  return apiClient.post<ReissueBody>("/auth/reissue/token", {
+    credentials: "include",
+  });
 }
