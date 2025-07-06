@@ -1,17 +1,16 @@
+import type { FollowDetectType } from "@/Follow/apis/follow";
+import { FollowList } from "@/Follow/components/FollowList";
+import { FollowStats } from "@/Follow/components/FollowStats";
+import { Tab } from "@/Follow/components/Tab";
 import Header from "@/common/components/Header";
 import Spacer from "@/common/components/Spacer";
 import { colors } from "@/common/styles/theme";
-import { FollowStats } from "@/Follow/components/FollowStats";
-import { Tab } from "@/Follow/components/Tab";
-import { FollowList } from "@/Follow/components/FollowList";
 import styled from "@emotion/styled";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 
-export type FollowTab = "co-following" | "follower" | "following";
-
 export function FollowPage() {
-  const [selectedTab, setSelectedTab] = useState<FollowTab>("co-following");
+  const [selectedTab, setSelectedTab] = useState<FollowDetectType>("mutual");
 
   return (
     <>
