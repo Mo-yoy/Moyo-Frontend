@@ -5,17 +5,42 @@ import { useNavigate } from "react-router";
 import { Z_INDEX } from "../constants/zIndex";
 import { rem } from "../utils/rem";
 
+/**
+ * Header 컴포넌트 Props
+ *
+ * 우선순위: render* > backButton, title > 기본 뒤로가기 버튼
+ */
 interface HeaderProps {
+  /** 백 버튼 커스터마이징 */
   backButton?: {
     renderIcon?: () => ReactElement;
     onClick?: () => void;
   };
+  /** 헤더 제목 */
   title?: string;
+  /** 왼쪽 섹션 커스터마이징 */
   renderLeft?: () => ReactElement;
+  /** 중앙 섹션 커스터마이징 */
   renderCenter?: () => ReactElement;
+  /** 오른쪽 섹션 커스터마이징 */
   renderRight?: () => ReactElement;
 }
 
+/**
+ * 페이지 헤더 컴포넌트
+ *
+ * @example
+ * ```tsx
+ * // default (backButton, title)
+ * <Header title="홈" />
+ *
+ * // backButton ui, 이벤트 커스터마이징
+ * <Header title="설정" backButton={{ onClick: () => navigate('/') }} />
+ *
+ * // 섹션별 커스터마이징 (renderLeft, renderCenter, renderRight)
+ * <Header renderCenter={() => <SearchBar />} />
+ * ```
+ */
 function Header({ backButton, title, renderLeft, renderCenter, renderRight }: HeaderProps) {
   const navigate = useNavigate();
 
