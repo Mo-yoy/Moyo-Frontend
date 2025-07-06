@@ -21,11 +21,11 @@ export const router = createBrowserRouter([
             path: "menu",
             element: <MenuPage />,
           },
+          {
+            path: "follow",
+            element: <FollowPage />,
+          },
         ],
-      },
-      {
-        path: "follow",
-        element: <FollowPage />,
       },
     ],
   },

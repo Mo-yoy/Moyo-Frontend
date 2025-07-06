@@ -9,6 +9,7 @@ interface FollowListProps {
 }
 
 export function FollowList({ type }: FollowListProps) {
+  // TODO: 실제 user data로 변경
   const users = Array.from({ length: 20 });
 
   return (
