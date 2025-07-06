@@ -3,8 +3,10 @@ import { accessTokenStore } from "@/common/stores/accessTokenStore";
 import ky from "ky";
 import { redirect } from "react-router";
 
+const API_VERSION = "v1";
+
 export const apiClient = ky.create({
-  prefixUrl: import.meta.env.VITE_API_BASE_URL,
+  prefixUrl: `${import.meta.env.VITE_API_BASE_URL}/api/${API_VERSION}`,
   hooks: {
     beforeRequest: [
       (request) => {
