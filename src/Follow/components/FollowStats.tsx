@@ -3,14 +3,17 @@ import { Flex, Text } from "@radix-ui/themes";
 
 const STATS = [
   {
+    type: "mutual",
     title: "맞팔로우",
     count: 25,
   },
   {
+    type: "follow-only",
     title: "팔로워",
     count: 3,
   },
   {
+    type: "followed-only",
     title: "팔로잉",
     count: 3,
   },

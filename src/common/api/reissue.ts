@@ -7,7 +7,7 @@ interface ReissueBody {
 
 export async function reissue() {
   return ky
-    .post<ApiResponse<ReissueBody>>(`${import.meta.env.VITE_API_BASE_URL}/auth/reissue/token`, {
+    .post<ApiResponse<ReissueBody>>(`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/reissue/token`, {
       credentials: "include",
     })
     .json();

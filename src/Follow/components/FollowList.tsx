@@ -1,11 +1,11 @@
+import type { FollowDetectType } from "@/Follow/apis/follow";
 import UserListItemCard from "@/common/components/UserListItemCard";
-import { Button, Flex } from "@radix-ui/themes";
 import UserProfileAvatar from "@/common/components/UserProfileAvatar";
+import { Button, Flex } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
-import type { FollowTab } from "@/Follow/page";
 
 interface FollowListProps {
-  type: FollowTab;
+  type: FollowDetectType;
 }
 
 export function FollowList({ type }: FollowListProps) {
@@ -14,17 +14,18 @@ export function FollowList({ type }: FollowListProps) {
   return (
     <Flex direction="column" gap="2" css={{ padding: "0 2rem" }}>
       {users.map((_, idx) => (
-        <UserListItemCard key={idx}>
-          <Flex justify="between">
+        // TODO: key user id로 변경
+        <UserListItemCard key={`${idx}-${type}`}>
+          <Flex justify="between" align="center">
             <Flex gap="4" align="center">
               <UserProfileAvatar />
 
-              <Text size="5" weight="medium">
-                이름
+              <Text size="2" weight="medium">
+                seobbang
               </Text>
             </Flex>
             <Flex gap="3">
-              <Button color="indigo" variant="soft">
+              <Button color="indigo" variant="soft" size="1">
                 Unfollow
               </Button>
             </Flex>
