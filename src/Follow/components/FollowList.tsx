@@ -1,28 +1,24 @@
-import type { FollowDetectType } from "@/Follow/apis/follow";
+import type { FollowDetectResponse } from "@/Follow/apis/follow";
 import UserListItemCard from "@/common/components/UserListItemCard";
 import UserProfileAvatar from "@/common/components/UserProfileAvatar";
 import { Button, Flex } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
 
 interface FollowListProps {
-  type: FollowDetectType;
+  userList: FollowDetectResponse["userList"];
 }
 
-export function FollowList({ type }: FollowListProps) {
-  // TODO: 실제 user data로 변경
-  const users = Array.from({ length: 20 });
-
+export function FollowList({ userList }: FollowListProps) {
   return (
     <Flex direction="column" gap="2" css={{ padding: "0 2rem" }}>
-      {users.map((_, idx) => (
-        // TODO: key user id로 변경
-        <UserListItemCard key={`${idx}-${type}`}>
+      {userList.map((user) => (
+        <UserListItemCard key={user.githubUserId}>
           <Flex justify="between" align="center">
             <Flex gap="4" align="center">
-              <UserProfileAvatar />
+              <UserProfileAvatar src={user.profileImgUrl} />
 
               <Text size="2" weight="medium">
-                seobbang
+                {user.username}
               </Text>
             </Flex>
             <Flex gap="3">
