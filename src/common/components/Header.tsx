@@ -79,7 +79,7 @@ function Header({ backButton, title, renderLeft, renderCenter, renderRight }: He
   return (
     <HeaderWrapper aria-label="페이지 헤더">
       <LeftElement>{renderLeft?.() ?? renderBackButton()}</LeftElement>
-      {renderCenterElement() || renderTitleElement()}
+      {renderCenterElement() ?? renderTitleElement()}
       <RightElement>{renderRight?.()}</RightElement>
     </HeaderWrapper>
   );
