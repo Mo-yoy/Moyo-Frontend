@@ -60,7 +60,7 @@ export function FollowPage() {
             <Spacer height={2} />
           </Flex>
         </Flex>
-        <FollowList userList={userList} />
+        <FollowList type={selectedType} userList={userList} />
       </Container>
     </>
   );
