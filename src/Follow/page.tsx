@@ -1,22 +1,24 @@
 import type { FollowDetectType } from "@/Follow/apis/follow";
 import { DetectTypeSelector } from "@/Follow/components/DetectTypeSelector";
 import { FollowList } from "@/Follow/components/FollowList";
+import { RefreshButton } from "@/Follow/components/RefreshButton";
 import { useQueryFollowDetect } from "@/Follow/hooks/apis/useQueryFollowDetect";
 import Header from "@/common/components/Header";
 import Spacer from "@/common/components/Spacer";
+import UserListItemCard from "@/common/components/UserListItemCard";
+import UserProfileAvatar from "@/common/components/UserProfileAvatar";
+import { useInfiniteScroll } from "@/common/hooks/useInfiniteScroll";
 import { colors } from "@/common/styles/theme";
 import { rem } from "@/common/utils/rem";
 import styled from "@emotion/styled";
-import { Button, Flex, Text } from "@radix-ui/themes";
+import { Flex, Skeleton, Spinner, Text } from "@radix-ui/themes";
 import { useState } from "react";
 
 export function FollowPage() {
   const [selectedType, setSelectedType] = useState<FollowDetectType>("mutual");
-  const {
-    data: {
-      data: { userList, totalUserCount, lastSyncAt },
-    },
-  } = useQueryFollowDetect(selectedType);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useQueryFollowDetect(selectedType);
+
+  const observerRef = useInfiniteScroll({ fetchNextPage, hasNextPage, isFetchingNextPage });
 
   return (
     <>
@@ -60,7 +62,29 @@ export function FollowPage() {
             <Spacer height={2} />
           </Flex>
         </Flex>
-        <FollowList type={selectedType} userList={userList} />
+
+        {data ? (
+          <>
+            <FollowList type={selectedType} userList={data.pages.flatMap(({ data: { userList } }) => userList)} />
+            <div ref={observerRef} css={{ height: rem(20), margin: `${rem(20)} 0` }} />
+
+            {isFetchingNextPage && (
+              <Flex justify="center" css={{ width: "100%" }}>
+                <Spinner />
+              </Flex>
+            )}
+          </>
+        ) : (
+          <Flex direction="column" gap="2" css={{ padding: `0 ${rem(2)}` }}>
+            {Array.from({ length: 10 }, (_, idx) => idx).map((idx) => (
+              <Skeleton key={idx}>
+                <UserListItemCard>
+                  <UserProfileAvatar />
+                </UserListItemCard>
+              </Skeleton>
+            ))}
+          </Flex>
+        )}
       </Container>
     </>
   );
