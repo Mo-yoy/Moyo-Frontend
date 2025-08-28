@@ -1,17 +1,19 @@
 import type { FollowDetectType } from "@/Follow/apis/follow";
 import { colors } from "@/common/styles/theme";
-import { Flex, SegmentedControl } from "@radix-ui/themes";
+import { SegmentedControl } from "@radix-ui/themes";
 
 interface Props {
+  value: FollowDetectType;
   onChange: (value: FollowDetectType) => void;
 }
 
-export function DetectTypeSelector({ onChange }: Props) {
+export function DetectTypeSelector({ value, onChange }: Props) {
   return (
     <SegmentedControl.Root
       defaultValue="mutual"
       radius="large"
       size="3"
+      value={value}
       onValueChange={onChange}
       variant="classic"
       css={{
