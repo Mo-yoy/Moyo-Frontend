@@ -46,18 +46,24 @@ export function FollowPage() {
                 {selectedType === "follow-only" && "나만 팔로우"}
                 {selectedType === "followed-only" && "상대만 팔로우"}
               </Text>
-              <Text
-                size="1"
-                weight="bold"
-                css={{
-                  backgroundColor: colors.gray4,
-                  color: colors.gray11,
-                  borderRadius: "50%",
-                  padding: rem(0.2),
-                }}
-              >
-                {totalUserCount}
-              </Text>
+              {data && (
+                <Text
+                  size="1"
+                  weight="bold"
+                  css={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: colors.gray4,
+                    color: colors.gray11,
+                    borderRadius: "50%",
+                    padding: rem(0.2),
+                    minWidth: 20,
+                  }}
+                >
+                  {data.pages[0].data.totalUserCount}
+                </Text>
+              )}
             </Flex>
             <Spacer height={2} />
           </Flex>
