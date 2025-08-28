@@ -16,8 +16,24 @@ export interface FollowDetectResponse {
   lastSyncAt: string;
 }
 
-export async function queryFollowDetect(detectType: FollowDetectType) {
-  return apiClient.get<ApiResponse<FollowDetectResponse>>(`api/v1/users/me/followings/${detectType}`).json();
+export async function queryFollowDetect({
+  detectType,
+  lastGithubUserId,
+}: { detectType: FollowDetectType; lastGithubUserId?: number }) {
+  const poll = async (): Promise<ApiResponse<FollowDetectResponse>> => {
+    const response = await apiClient.get(`api/v1/users/me/followings/${detectType}`, {
+      searchParams: lastGithubUserId ? { lastGithubUserId } : undefined,
+    });
+
+    if (response.status === 202) {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return poll();
+    }
+
+    return response.json();
+  };
+
+  return poll();
 }
 
 export async function createFollowUser(githubUserId: FollowDetectUser["githubUserId"]) {

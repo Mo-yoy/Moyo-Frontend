@@ -12,7 +12,7 @@ export function useQueryFollowDetect(detectType: FollowDetectType) {
     number | undefined
   >({
     queryKey: followQueryKeys.list(detectType),
-    queryFn: ({ pageParam }) => queryFollowDetect(detectType, pageParam),
+    queryFn: ({ pageParam }) => queryFollowDetect({ detectType, lastGithubUserId: pageParam }),
     initialPageParam: undefined,
     getNextPageParam: (prevPage) => {
       const lastPage = prevPage.data.lastPage;
