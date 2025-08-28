@@ -38,7 +38,7 @@ export function FollowPage() {
         <Flex direction="column" align="center" gap="4">
           <Flex direction="column" align="center" css={{ width: "100%" }}>
             <Spacer height={2} />
-            <DetectTypeSelector onChange={setSelectedType} />
+            <DetectTypeSelector value={selectedType} onChange={setSelectedType} />
             <Spacer height={2} />
             <Flex align="center" gap="1" css={{ margin: `0 auto 0 ${rem(2)}` }}>
               <Text size="2" weight="bold">
