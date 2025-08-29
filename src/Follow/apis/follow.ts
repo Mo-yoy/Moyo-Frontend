@@ -40,6 +40,10 @@ export async function createFollowUser(githubUserId: FollowDetectUser["githubUse
   return apiClient.post<ApiResponse<FollowDetectResponse>>(`api/v1/follow/${githubUserId}`).json();
 }
 
+export async function createFollowRefresh() {
+  return apiClient.post<ApiResponse<null>>("api/v1/users/me/followings/refresh").json();
+}
+
 export async function deleteUnfollowUser(githubUserId: FollowDetectUser["githubUserId"]) {
   return apiClient.delete<ApiResponse<FollowDetectResponse>>(`api/v1/unfollow/${githubUserId}`).json();
 }
