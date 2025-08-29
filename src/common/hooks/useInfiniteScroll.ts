@@ -4,9 +4,10 @@ interface Params {
   fetchNextPage: () => void;
   hasNextPage: boolean;
   isFetchingNextPage: boolean;
+  options?: IntersectionObserverInit;
 }
 
-export function useInfiniteScroll({ fetchNextPage, hasNextPage, isFetchingNextPage }: Params) {
+export function useInfiniteScroll({ fetchNextPage, hasNextPage, isFetchingNextPage, options }: Params) {
   const observerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export function useInfiniteScroll({ fetchNextPage, hasNextPage, isFetchingNextPa
       {
         threshold: 0.1,
         rootMargin: "100px",
+        ...options,
       }
     );
 
