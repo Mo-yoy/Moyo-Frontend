@@ -62,13 +62,10 @@ export function FollowPage() {
         {data ? (
           <>
             <FollowList type={selectedType} userList={data.pages.flatMap(({ data: { userList } }) => userList)} />
-            <div ref={observerRef} css={{ height: rem(20), margin: `${rem(20)} 0` }} />
 
-            {isFetchingNextPage && (
-              <Flex justify="center" css={{ width: "100%" }}>
-                <Spinner />
-              </Flex>
-            )}
+            <Flex ref={observerRef} justify="center" align="center" css={{ width: "100%", height: rem(6) }}>
+              {isFetchingNextPage && <Spinner css={{ height: rem(2.5) }} />}
+            </Flex>
           </>
         ) : (
           <Flex direction="column" gap="2" css={{ padding: `0 ${rem(2)}` }}>
