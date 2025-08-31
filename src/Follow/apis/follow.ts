@@ -20,8 +20,8 @@ export async function queryFollowDetect({
   detectType,
   lastGithubUserId,
 }: { detectType: FollowDetectType; lastGithubUserId?: number }) {
-  const poll = async (): Promise<ApiResponse<FollowDetectResponse>> => {
-    const response = await apiClient.get(`api/v1/users/me/followings/${detectType}`, {
+  const poll = async () => {
+    const response = await apiClient.get<FollowDetectResponse>(`api/v1/users/me/followings/${detectType}`, {
       searchParams: lastGithubUserId ? { lastGithubUserId } : undefined,
     });
 
@@ -30,20 +30,20 @@ export async function queryFollowDetect({
       return poll();
     }
 
-    return response.json();
+    return response;
   };
 
   return poll();
 }
 
 export async function createFollowUser(githubUserId: FollowDetectUser["githubUserId"]) {
-  return apiClient.post<ApiResponse<FollowDetectResponse>>(`api/v1/follow/${githubUserId}`).json();
+  return apiClient.post<FollowDetectResponse>(`api/v1/follow/${githubUserId}`);
 }
 
 export async function createFollowRefresh() {
-  return apiClient.post<ApiResponse<null>>("api/v1/users/me/followings/refresh").json();
+  return apiClient.post<null>("api/v1/users/me/followings/refresh");
 }
 
 export async function deleteUnfollowUser(githubUserId: FollowDetectUser["githubUserId"]) {
-  return apiClient.delete<ApiResponse<FollowDetectResponse>>(`api/v1/unfollow/${githubUserId}`).json();
+  return apiClient.delete<FollowDetectResponse>(`api/v1/unfollow/${githubUserId}`);
 }
