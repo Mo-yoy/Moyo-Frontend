@@ -22,7 +22,10 @@ export function FollowPage() {
 
   return (
     <>
-      <Header center="팔로우 관리" right={data && <RefreshButton lastSyncAt={data.pages[0].data.lastSyncAt} />} />
+      <Header
+        renderCenter={() => <>"팔로우 관리"</>}
+        renderRight={data ? () => <RefreshButton lastSyncAt={data.pages[0].data.lastSyncAt} /> : undefined}
+      />
 
       <Container>
         <Flex direction="column" align="center" gap="4">
