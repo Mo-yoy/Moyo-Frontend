@@ -30,7 +30,7 @@ export function useInfiniteScroll({ fetchNextPage, hasNextPage, isFetchingNextPa
     }
 
     return () => observer.disconnect();
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, options]);
 
   return observerRef;
 }
