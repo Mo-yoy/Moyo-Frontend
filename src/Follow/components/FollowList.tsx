@@ -38,7 +38,8 @@ export function FollowList({ type, userList }: FollowListProps) {
                     css={{ cursor: "pointer" }}
                     onClick={async () => {
                       try {
-                        follow(user.githubUserId);
+                        await follow(user.githubUserId);
+                        toast.success("팔로우에 성공했습니다.");
                       } catch (e) {
                         toast.error("팔로우에 실패했습니다. 다시 시도해주세요");
                       }
@@ -54,7 +55,8 @@ export function FollowList({ type, userList }: FollowListProps) {
                     css={{ cursor: "pointer" }}
                     onClick={async () => {
                       try {
-                        unfollow(user.githubUserId);
+                        await unfollow(user.githubUserId);
+                        toast.success("언팔로우에 성공했습니다.");
                       } catch (e) {
                         toast.error("언팔로우에 실패했습니다. 다시 시도해주세요");
                       }
