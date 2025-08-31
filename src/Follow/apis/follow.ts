@@ -1,5 +1,4 @@
 import { apiClient } from "@/common/api";
-import type { ApiResponse } from "@/common/types/api";
 
 export type FollowDetectType = "mutual" | "follow-only" | "followed-only";
 
