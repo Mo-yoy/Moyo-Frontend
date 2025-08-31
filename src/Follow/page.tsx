@@ -23,7 +23,7 @@ export function FollowPage() {
   return (
     <>
       <Header
-        renderCenter={() => <>"팔로우 관리"</>}
+        renderCenter={() => <>팔로우 관리</>}
         renderRight={data ? () => <RefreshButton lastSyncAt={data.pages[0].data.lastSyncAt} /> : undefined}
       />
 
