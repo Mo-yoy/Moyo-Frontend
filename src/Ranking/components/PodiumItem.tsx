@@ -11,7 +11,7 @@ interface PodiumItemProps {
 
 export function PodiumItem({ rank, nickname, point, profileImage }: PodiumItemProps) {
   return (
-    <PodiumItemWrapper>
+    <PodiumItemWrapper rank={rank}>
       <ImageWrapper>
         <UserProfileAvatar src={profileImage} alt="프로필 사진" style={{ width: "100%", height: "100%" }} />
         <Medal rank={rank}>{rank}</Medal>
@@ -22,13 +22,14 @@ export function PodiumItem({ rank, nickname, point, profileImage }: PodiumItemPr
   );
 }
 
-const PodiumItemWrapper = styled.div({
+const PodiumItemWrapper = styled.div<{ rank: number }>(({ rank }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
 
   width: "fit-content",
-});
+  marginTop: rank === 2 || rank === 3 ? rem(3) : 0,
+}));
 
 const ImageWrapper = styled.div({
   position: "relative",
