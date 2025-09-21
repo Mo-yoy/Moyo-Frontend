@@ -21,6 +21,5 @@ export function useQueryFollowDetect(detectType: FollowDetectType) {
       const userList = prevPage.data.userList;
       return userList[userList.length - 1].githubUserId;
     },
-    staleTime: 60000,
   });
 }
