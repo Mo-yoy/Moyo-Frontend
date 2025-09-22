@@ -10,7 +10,6 @@ interface Props {
 export function DetectTypeSelector({ value, onChange }: Props) {
   return (
     <SegmentedControl.Root
-      defaultValue="mutual"
       radius="large"
       size="3"
       value={value}
