@@ -19,6 +19,8 @@ export function useQueryFollowDetect(detectType: FollowDetectType) {
       if (lastPage) return undefined;
 
       const userList = prevPage.data.userList;
+      if (userList.length === 0) return;
+
       return userList[userList.length - 1].githubUserId;
     },
   });
