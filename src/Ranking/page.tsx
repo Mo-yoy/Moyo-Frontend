@@ -1,12 +1,22 @@
-import ImgPodium from "@/assets/images/test.jpg";
 import Header from "@/common/components/Header";
 import { rem } from "@/common/utils/rem";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { PodiumItem } from "./components/PodiumItem";
+import { RankingItem } from "./components/RankingItem";
+import { useQueryUserRanking } from "./hooks/useQueryUserRanking";
 
 export function RankingPage() {
-  const [selectedOption, setSelectedOption] = useState<"weekly" | "monthly" | "yearly">("weekly");
+  const [selectedOption, setSelectedOption] = useState<"week" | "month" | "year">("week");
+
+  const { data: userRanking, isPending: isPendingUserRanking } = useQueryUserRanking({
+    duration: selectedOption,
+  });
+
+  const rankingList = userRanking?.data.rankingList ?? [];
+
+  const topThree = rankingList.slice(0, 3);
+  const rest = rankingList.slice(3);
 
   return (
     <>
@@ -14,47 +24,64 @@ export function RankingPage() {
       <PageBody>
         <PodiumContainer>
           <RankingOptionButtonGroup>
-            <RankingOptionButton isSelected={selectedOption === "weekly"} onClick={() => setSelectedOption("weekly")}>
+            <RankingOptionButton isSelected={selectedOption === "week"} onClick={() => setSelectedOption("week")}>
               주간
             </RankingOptionButton>
-            <div
-              style={{
-                width: rem(0.1),
-                height: rem(2),
-                margin: `0 ${rem(0.3)}`,
-                backgroundColor: "#A1A1A1",
-              }}
-            />
-            <RankingOptionButton isSelected={selectedOption === "monthly"} onClick={() => setSelectedOption("monthly")}>
+            <Divider />
+            <RankingOptionButton isSelected={selectedOption === "month"} onClick={() => setSelectedOption("month")}>
               월간
             </RankingOptionButton>
-            <div
-              style={{
-                width: rem(0.1),
-                height: rem(2),
-                margin: `0 ${rem(0.3)}`,
-                backgroundColor: "#A1A1A1",
-              }}
-            />
-            <RankingOptionButton isSelected={selectedOption === "yearly"} onClick={() => setSelectedOption("yearly")}>
+            <Divider />
+            <RankingOptionButton isSelected={selectedOption === "year"} onClick={() => setSelectedOption("year")}>
               연간
             </RankingOptionButton>
           </RankingOptionButtonGroup>
-          <PodiumItemWrapper>
-            <PodiumItem rank={2} nickname="spongebob" point={1000} profileImage={ImgPodium} />
-            <PodiumItem rank={1} nickname="spongebob" point={1000} profileImage={ImgPodium} />
-            <PodiumItem rank={3} nickname="spongebob" point={1000} profileImage={ImgPodium} />
-          </PodiumItemWrapper>
+          {!isPendingUserRanking && (
+            <PodiumItemWrapper>
+              <PodiumItem
+                rank={2}
+                nickname={topThree[1]?.username || ""}
+                point={topThree[1]?.rankPoint || 0}
+                profileImage={topThree[1]?.profileImageUrl || ""}
+              />
+              <PodiumItem
+                rank={1}
+                nickname={topThree[0]?.username || ""}
+                point={topThree[0]?.rankPoint || 0}
+                profileImage={topThree[0]?.profileImageUrl || ""}
+              />
+              <PodiumItem
+                rank={3}
+                nickname={topThree[2]?.username || ""}
+                point={topThree[2]?.rankPoint || 0}
+                profileImage={topThree[2]?.profileImageUrl || ""}
+              />
+            </PodiumItemWrapper>
+          )}
         </PodiumContainer>
+        <RankingList>
+          {!isPendingUserRanking &&
+            rest.map((user, index) => (
+              <RankingItem
+                key={user.userid}
+                rank={index + 4}
+                nickname={user.username}
+                point={user.rankPoint}
+                profileImage={user.profileImageUrl}
+              />
+            ))}
+        </RankingList>
       </PageBody>
     </>
   );
 }
 
-const PageBody = styled.div`
-  width: 100%;
-  height: 100dvh;
-`;
+const PageBody = styled.div({
+  width: "100%",
+  height: "calc(100dvh - 4.8rem)",
+  display: "flex",
+  flexDirection: "column",
+});
 
 const PodiumContainer = styled.div({
   display: "flex",
@@ -108,3 +135,26 @@ const RankingOptionButton = styled.button<{ isSelected: boolean }>(({ isSelected
 
   backgroundColor: isSelected ? "#A1A1A1" : "transparent",
 }));
+
+const RankingList = styled.div({
+  position: "absolute",
+  bottom: 0,
+
+  display: "flex",
+  flexDirection: "column",
+  gap: rem(1.1),
+
+  width: "100%",
+  height: "calc(100dvh - 29rem)",
+  padding: `${rem(2.3)} ${rem(1.3)}`,
+
+  borderRadius: `${rem(1.5)} ${rem(1.5)} 0 0`,
+  backgroundColor: "#ffffff",
+});
+
+const Divider = styled.div({
+  width: rem(0.1),
+  height: rem(2),
+  margin: `0 ${rem(0.3)}`,
+  backgroundColor: "#A1A1A1",
+});
