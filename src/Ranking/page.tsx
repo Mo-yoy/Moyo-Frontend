@@ -1,3 +1,4 @@
+import { BottomNav } from "@/common/components/BottomNav";
 import Header from "@/common/components/Header";
 import { useInfiniteScroll } from "@/common/hooks/useInfiniteScroll";
 import { rem } from "@/common/utils/rem";
@@ -90,13 +91,14 @@ export function RankingPage() {
           </Flex>
         </RankingList>
       </PageBody>
+      <BottomNav />
     </>
   );
 }
 
 const PageBody = styled.div({
   width: "100%",
-  height: "calc(100dvh - 4.8rem)",
+  height: "calc(100dvh - 9.8rem)",
   display: "flex",
   flexDirection: "column",
 });
