@@ -84,6 +84,7 @@ const PageBody = styled.div({
 });
 
 const PodiumContainer = styled.div({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -95,13 +96,10 @@ const PodiumContainer = styled.div({
 });
 
 const PodiumItemWrapper = styled.div({
+  position: "absolute",
+  top: rem(6.3), // RankingOptionButtonGroup 아래 위치
   width: "100%",
-
-  paddingTop: rem(2.6),
-
-  display: "flex",
-  justifyContent: "center",
-  gap: rem(3),
+  height: rem(15),
 });
 
 const RankingOptionButtonGroup = styled.div({

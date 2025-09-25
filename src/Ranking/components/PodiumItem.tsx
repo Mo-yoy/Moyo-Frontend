@@ -22,14 +22,39 @@ export function PodiumItem({ rank, nickname, point, profileImage }: PodiumItemPr
   );
 }
 
-const PodiumItemWrapper = styled.div<{ rank: number }>(({ rank }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+const PodiumItemWrapper = styled.div<{ rank: number }>(({ rank }) => {
+  const getPosition = () => {
+    switch (rank) {
+      case 1:
+        return {
+          left: "50%",
+          transform: "translateX(-50%)",
+          top: 0,
+        };
+      case 2:
+        return {
+          left: "2rem",
+          top: rem(3),
+        };
+      case 3:
+        return {
+          right: "2rem",
+          top: rem(3),
+        };
+      default:
+        return {};
+    }
+  };
 
-  width: "fit-content",
-  marginTop: rank === 2 || rank === 3 ? rem(3) : 0,
-}));
+  return {
+    position: "absolute",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "fit-content",
+    ...getPosition(),
+  };
+});
 
 const ImageWrapper = styled.div({
   position: "relative",
