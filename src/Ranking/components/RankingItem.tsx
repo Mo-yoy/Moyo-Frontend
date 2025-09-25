@@ -34,6 +34,7 @@ const RankingItemWrapper = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  flexShrink: 0,
 
   width: "100%",
   height: rem(6.9),

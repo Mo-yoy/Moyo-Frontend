@@ -1,6 +1,8 @@
 import Header from "@/common/components/Header";
+import { useInfiniteScroll } from "@/common/hooks/useInfiniteScroll";
 import { rem } from "@/common/utils/rem";
 import styled from "@emotion/styled";
+import { Flex, Spinner } from "@radix-ui/themes";
 import { useState } from "react";
 import { PodiumItem } from "./components/PodiumItem";
 import { RankingItem } from "./components/RankingItem";
@@ -9,14 +11,26 @@ import { useQueryUserRanking } from "./hooks/useQueryUserRanking";
 export function RankingPage() {
   const [selectedOption, setSelectedOption] = useState<"week" | "month" | "year">("week");
 
-  const { data: userRanking, isPending: isPendingUserRanking } = useQueryUserRanking({
+  const {
+    data: userRanking,
+    isPending: isPendingUserRanking,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useQueryUserRanking({
     duration: selectedOption,
   });
 
-  const rankingList = userRanking?.data.rankingList ?? [];
+  const observerRef = useInfiniteScroll({
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  });
 
-  const topThree = rankingList.slice(0, 3);
-  const rest = rankingList.slice(3);
+  const allRankingList = userRanking?.pages.flatMap((page) => page.data.rankingList) ?? [];
+
+  const topThree = allRankingList.slice(0, 3);
+  const rest = allRankingList.slice(3);
 
   return (
     <>
@@ -70,6 +84,10 @@ export function RankingPage() {
                 profileImage={user.profileImageUrl}
               />
             ))}
+
+          <Flex ref={observerRef} justify="center" align="center" css={{ width: "100%", height: rem(6) }}>
+            {isFetchingNextPage && <Spinner css={{ height: rem(2.5) }} />}
+          </Flex>
         </RankingList>
       </PageBody>
     </>
@@ -97,7 +115,7 @@ const PodiumContainer = styled.div({
 
 const PodiumItemWrapper = styled.div({
   position: "absolute",
-  top: rem(6.3), // RankingOptionButtonGroup 아래 위치
+  top: rem(6.3),
   width: "100%",
   height: rem(15),
 });
@@ -145,6 +163,7 @@ const RankingList = styled.div({
   width: "100%",
   height: "calc(100dvh - 29rem)",
   padding: `${rem(2.3)} ${rem(1.3)}`,
+  overflowY: "auto", // 스크롤 가능하도록 설정
 
   borderRadius: `${rem(1.5)} ${rem(1.5)} 0 0`,
   backgroundColor: "#ffffff",
