@@ -1,4 +1,5 @@
 import { IconGithubLogo } from "@/assets/icons";
+import backgroundVideo from "@/assets/videos/login_background.mp4";
 import Spacer from "@/common/components/Spacer";
 import { colors } from "@/common/styles/theme";
 import { rem } from "@/common/utils/rem";
@@ -9,7 +10,7 @@ export function LoginPage() {
   return (
     <Container>
       <BackgroundVideo autoPlay muted loop>
-        <source src="src/assets/videos/login_background.mp4" type="video/mp4" />
+        <source src={backgroundVideo} type="video/mp4" />
       </BackgroundVideo>
 
       <TextContainer>
